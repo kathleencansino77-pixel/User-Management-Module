@@ -66,6 +66,14 @@ $database['main'] = array(
     'database'	=> getenv('DB_NAME') ?: 'mydb',
     'charset'	=> getenv('DB_CHARSET') ?: 'utf8mb4',
     'dbprefix'	=> getenv('DB_PREFIX') ?: '',
+    // SSL Settings for Aiven
+    'options'   => array(
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+        PDO::MYSQL_ATTR_SSL_CA => '/etc/ssl/certs/ca-certificates.crt',
+        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false
+    ),
     // Optional for SQLite
     'path'      => ''
 );
